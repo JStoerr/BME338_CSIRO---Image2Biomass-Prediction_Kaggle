@@ -6,7 +6,8 @@ This Image2Biomass workspace pairs Kaggle imagery with notebook-first experiment
 - `model_build.ipynb` is the canonical modeling notebook; once logic stabilizes, port reusable pieces into a `scripts/` helper or a new `src/` package so they can be imported elsewhere.
 - Kaggle assets stay under `data/` (`train/`, `test/`, `*_csv` mirrors); write derived embeddings or tabular features to `data/derived/<artifact>.parquet` with brief provenance notes.
 - The actively supported runtime lives in `wsl_venv/` (aligned with WSL paths); `environment.yml` exists for coworkers using Conda but is not part of the default workflow here.
-- `scripts/mlp_head.py` trains the lightweight regression head on the `data/derived/dino_embeddings.parquet` artifact and should remain CLI-driven so it can be versioned and reproduced outside notebooks.
+- `scripts/mlp_head.py` trains the lightweight regression head on the `data/derived/dino_embeddings.parquet` artifact, reports validation R²/ RMSE alongside losses, and should remain CLI-driven so it can be versioned and reproduced outside notebooks.
+- `scripts/parameter_tuning.py` wraps Ray Tune around the MLP head; it maximizes the validation R² emitted in `mlp_metrics.json` and exposes `--num-samples` plus `--time-budget-s` flags so you can decide how long sweeps should run.
 
 ## Build, Test, and Development Commands
 - `source wsl_venv/bin/activate && python -m pip install -U pip` keeps the WSL virtualenv current; only regenerate `wsl_venv` when dependency drift becomes unmanageable.
@@ -14,6 +15,7 @@ This Image2Biomass workspace pairs Kaggle imagery with notebook-first experiment
 - With the venv active, start notebooks via `jupyter lab`; commit checkpoints only after running top-to-bottom.
 - Promote notebooks to scripts via parameterized CLIs, e.g., `python -m src.training.run_experiment --config configs/baseline.yaml`; add `--dry-run` to validate configs without GPU usage and finish each notebook refactor with `pytest tests -m "not slow"` for a quick regression signal.
 - After generating embeddings, run `python scripts/mlp_head.py --epochs 200 --batch-size 64` (tweak flags as needed) to produce updated predictions, `mlp_head.pt`, `mlp_head_last.pt`, and metrics inside `data/derived/`; refresh these artifacts whenever notebook preprocessing changes.
+- For longer sweeps, launch `python scripts/parameter_tuning.py --num-samples 60 [--time-budget-s 86400]` so Ray explores more of the search space while tracking metrics in `data/derived/tune_runs/`.
 
 ## Coding Style & Naming Conventions
 - Follow PEP 8 with 4-space indents; auto-format using `black .` and `isort .` before pushing.

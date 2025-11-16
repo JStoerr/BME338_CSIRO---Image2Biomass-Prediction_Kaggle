@@ -11,6 +11,7 @@ from typing import Iterable, List, Sequence, Tuple
 import numpy as np
 import pandas as pd
 import torch
+from sklearn.metrics import r2_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from torch import nn
@@ -229,6 +230,9 @@ def run(args: argparse.Namespace) -> None:
     }
     model.load_state_dict(best_state["model_state"])
 
+    val_preds = predict_all(model, X_val_scaled, device)
+    val_r2 = float(r2_score(y_val, val_preds, multioutput="variance_weighted"))
+
     scaled_full = scaler.transform(bundle.features)
     predictions = predict_all(model, scaled_full, device)
 
@@ -249,6 +253,7 @@ def run(args: argparse.Namespace) -> None:
         "feature_cols": bundle.feature_cols,
         "target_names": bundle.target_names,
         "best_val_loss": best_val,
+        "best_val_r2": val_r2,
     }
     ckpt_path = derived_dir / "mlp_head.pt"
     torch.save(checkpoint, ckpt_path)
@@ -271,6 +276,7 @@ def run(args: argparse.Namespace) -> None:
         "best_val_loss": best_val,
         "last_val_loss": last_val_loss,
         "val_rmse": float(np.sqrt(best_val)),
+        "val_r2": val_r2,
         "num_train_samples": len(id_train),
         "num_val_samples": len(id_val),
         "targets": bundle.target_names,

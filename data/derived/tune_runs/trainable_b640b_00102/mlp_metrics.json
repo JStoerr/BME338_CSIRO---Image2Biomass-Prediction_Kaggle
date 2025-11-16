@@ -1,7 +1,8 @@
 {
-  "best_val_loss": 70.98120498657227,
-  "last_val_loss": 117.13547134399414,
-  "val_rmse": 8.425034420497774,
+  "best_val_loss": 89.7650146484375,
+  "last_val_loss": 98.34334564208984,
+  "val_rmse": 9.474440070444137,
+  "val_r2": 0.770861804485321,
   "num_train_samples": 285,
   "num_val_samples": 72,
   "targets": [

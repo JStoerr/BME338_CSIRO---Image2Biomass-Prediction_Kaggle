@@ -1,0 +1,28 @@
+data/derived/tune_runs/*
+!data/derived/tune_runs
+!data/derived/tune_runs/best_trial_summary.json
+!data/derived/tune_runs/tune_history.jsonl     
+!data/derived/tune_runs/run_*
+!data/derived/tune_runs/trainable_b640b_00102
+
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+wsl_venv/
+.venv/
+venv/
+env/
+
+# Notebook and IDE cruft
+.ipynb_checkpoints/
+.DS_Store
+.idea/
+.vscode/
+
+# Training artifacts & checkpoints
+*.pth
+*.ckpt
