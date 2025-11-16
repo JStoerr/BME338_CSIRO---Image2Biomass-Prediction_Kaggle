@@ -1,19 +1,19 @@
 {
-  "trial_id": "b640b_00102",
+  "trial_id": "7d048_00102",
   "status": "TERMINATED",
-  "local_path": "/tmp/ray/session_2025-11-16_00-49-08_164009_174503/artifacts/2025-11-16_00-49-23/mlp_head_tuning/driver_artifacts/trainable_b640b_00102_102_batch_size=128,dropout=0.1979,hidden_dims=512_256,lr=0.0006,seed=532_2025-11-16_00-49-24",
+  "local_path": "/tmp/ray/session_2025-11-16_09-30-03_739581_3096/artifacts/2025-11-16_09-30-20/mlp_head_tuning/driver_artifacts/trainable_7d048_00102_102_batch_size=128,dropout=0.1167,hidden_dims=256_128,lr=0.0004,seed=554_2025-11-16_09-30-22",
   "config": {
     "hidden_dims": [
-      512,
-      256
+      256,
+      128
     ],
-    "lr": 0.0006105117013721203,
-    "dropout": 0.19789118512107734,
+    "lr": 0.00044871974497914265,
+    "dropout": 0.11672020955405596,
     "batch_size": 128,
     "epochs": 200,
-    "seed": 532,
+    "seed": 554,
     "base_output_dir": "/mnt/c/Users/dhess/Projects/machine_learning_projects/Image2Biomass-Prediction_Kaggle/BME338_CSIRO---Image2Biomass-Prediction_Kaggle/data/derived/tune_runs"
   },
-  "best_val_r2": 0.770861804485321,
-  "best_val_loss": 89.7650146484375
+  "best_val_r2": 0.7810267806053162,
+  "best_val_loss": 108.20561981201172
 }

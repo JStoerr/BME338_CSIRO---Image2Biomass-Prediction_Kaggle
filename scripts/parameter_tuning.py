@@ -76,10 +76,10 @@ if __name__ == "__main__":
 
     experiment_name = "mlp_head_tuning"
     search_space = {
-        "hidden_dims": tune.grid_search([[128, 64],[256, 128], [512, 256], [256, 128, 64], [64, 32, 16, 16]]),
+        "hidden_dims": tune.grid_search([[256, 128], [512, 256]]),
         "lr": tune.loguniform(1e-4, 1e-3),
         "dropout": tune.uniform(0.1, 0.3),
-        "batch_size": tune.choice([64, 128]),
+        "batch_size": tune.choice([128]),
         "epochs": 200,
         "seed": tune.randint(0, 1000),
         "base_output_dir": str(base_output_dir),

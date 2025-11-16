@@ -1,9 +1,10 @@
 data/derived/tune_runs/*
 !data/derived/tune_runs
 !data/derived/tune_runs/best_trial_summary.json
+!data/derived/tune_runs/latest_run_summary.json
 !data/derived/tune_runs/tune_history.jsonl     
 !data/derived/tune_runs/run_*
-!data/derived/tune_runs/trainable_b640b_00102
+!data/derived/tune_runs/trainable_7d048_00102
 
 # Byte-compiled / cache files
 __pycache__/
