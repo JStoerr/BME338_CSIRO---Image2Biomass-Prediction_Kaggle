@@ -33,7 +33,11 @@ def trainable(config: Dict) -> None:
 
     ctx = tune.get_context()
     trial_name = ctx.get_trial_name() if ctx and ctx.get_trial_name() else f"trial_{config['seed']}"
-    trial_dir = Path(config["base_output_dir"]) / trial_name
+    base_dir = Path(config["base_output_dir"])
+    if not base_dir.is_absolute():
+        base_dir = REPO_ROOT / base_dir
+    base_dir = base_dir.resolve()
+    trial_dir = base_dir / trial_name
     trial_dir.mkdir(parents=True, exist_ok=True)
     args.output_dir = trial_dir
     args.cpu = not torch.cuda.is_available()
@@ -71,7 +75,8 @@ def build_argparser() -> argparse.ArgumentParser:
 
 if __name__ == "__main__":
     cli_args = build_argparser().parse_args()
-    base_output_dir = REPO_ROOT / "data/derived" / "tune_runs"
+    base_output_dir_rel = Path("data/derived/tune_runs")
+    base_output_dir = (REPO_ROOT / base_output_dir_rel).resolve()
     base_output_dir.mkdir(parents=True, exist_ok=True)
 
     experiment_name = "mlp_head_tuning"
@@ -82,7 +87,7 @@ if __name__ == "__main__":
         "batch_size": tune.choice([128]),
         "epochs": 200,
         "seed": tune.randint(0, 1000),
-        "base_output_dir": str(base_output_dir),
+        "base_output_dir": str(base_output_dir_rel),
     }
 
     tune_kwargs = {
