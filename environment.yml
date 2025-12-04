@@ -211,4 +211,3 @@ dependencies:
       - sympy==1.14.0
       - torch==2.9.0
       - torchvision==0.24.0
-prefix: C:\Users\julia\anaconda3\envs\Kaggle_ML

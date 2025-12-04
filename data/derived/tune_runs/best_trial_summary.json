@@ -1,0 +1,19 @@
+{
+  "trial_id": "7d048_00102",
+  "status": "TERMINATED",
+  "local_path": "/tmp/ray/session_2025-11-16_09-30-03_739581_3096/artifacts/2025-11-16_09-30-20/mlp_head_tuning/driver_artifacts/trainable_7d048_00102_102_batch_size=128,dropout=0.1167,hidden_dims=256_128,lr=0.0004,seed=554_2025-11-16_09-30-22",
+  "config": {
+    "hidden_dims": [
+      256,
+      128
+    ],
+    "lr": 0.00044871974497914265,
+    "dropout": 0.11672020955405596,
+    "batch_size": 128,
+    "epochs": 200,
+    "seed": 554,
+    "base_output_dir": "/mnt/c/Users/dhess/Projects/machine_learning_projects/Image2Biomass-Prediction_Kaggle/BME338_CSIRO---Image2Biomass-Prediction_Kaggle/data/derived/tune_runs"
+  },
+  "best_val_r2": 0.7810267806053162,
+  "best_val_loss": 108.20561981201172
+}
