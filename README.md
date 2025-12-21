@@ -5,41 +5,33 @@ Course: BME338(UZH, HS25)
 This repository contains a python based Machine Learning Project for participating in the CSIRO Image2Biomass Prediction Kaggle Competition for the BME338 Course Project. The goal of this project was to explore Feature extraction using a Vision Transformer (ViT) and create a simple MLP for predicting 5 different Biomass values.
 
 ## Project Structure
-.
 ├── data/
-│   ├── derived/
-│   │   ├── dino_embeddings.pkl
-│   │   └── dino_subm_embeddings.pkl
-│   │
-│   ├── submission/
-│   │   └── submission.csv
-│   │
-│   ├── train/
-│   │   └── *.jpg
-│   │
-│   ├── test/
-│   │   └── *.jpg
-│   │
-│   ├── train.csv
-│   ├── test.csv
-│   └── sample_submission.csv
+│ ├── train/
+│ ├── test/
+│ ├── derived/
+│ │ ├── dino_embeddings.pkl
+│ │ └── dino_subm_embeddings.pkl
+│ ├── submission/
+│ │ └── submission.csv
+│ ├── train.csv
+│ ├── test.csv
+│ └── sample_submission.csv
 │
 ├── scripts/
-│   ├── models/
-│   │   └── mlp.py
-│   │
-│   ├── Feature_Extraction.ipynb
-│   ├── MLP_build.ipynb
-│   ├── Submission.ipynb
-│   └── Overview.ipynb
+│ ├── models/
+│ │ └── mlp.py
+│ ├── Feature_Extraction.ipynb
+│ ├── MLP_build.ipynb
+│ ├── Submission.ipynb
+│ └── Overview.ipynb
 │
 ├── documentation/
-│   └── BME338_Project_Presentation.pdf
+│ └── BME338_Project_Presentation.pdf
 │
 ├── environment.yml
 ├── requirements.txt
-├── README.md
 ├── Competition_Overview.md
+├── README.md
 └── .gitignore
 
 
